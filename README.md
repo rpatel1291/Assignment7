@@ -33,7 +33,7 @@ Using Javascript, the web page will then append the images found to an area on t
 
 **To test, just use multiple windows and different usernames!**
 
-##Your Worker
+## Your Worker
 ===
 
 You will make a file, **worker.js**, that performs a single task
@@ -42,7 +42,7 @@ When the worker is informaed to research for a message, it will search the [pixa
 
 After it downloads these results ("researching"), it will publish a message from pixabay, as well as the user who searched for it, and their message.
 
-##Your Routes
+## Your Routes
 ===
 
 You will only have 1 route!
@@ -51,7 +51,7 @@ You will only have 1 route!
 
 This route will send a static file that allows users to connect via websocket to the rest of the app
 
-##General Requirements
+## General Requirements
 ===
 
 1. Remember to submit your **package.json** file but not your **node_modules** folder.
