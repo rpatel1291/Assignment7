@@ -1,6 +1,6 @@
 # CS-554 Assignment 7
 ## Websockets and a Worker
-===
+==== 
 
 For this lab, you implement basic websocket usage through Socket.io
 
