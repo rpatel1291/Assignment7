@@ -1,6 +1,7 @@
+
 # CS-554 Assignment 7
+
 ## Websockets and a Worker
-----------
 
 
 For this lab, you implement basic websocket usage through Socket.io
@@ -10,7 +11,6 @@ This lab is extremely open ended in terms of display, and specific implementatio
 **You will need to run two processes!**
 
 ## The Lightweight Server
-===
 
 You will run a server that renders a single page to the user.
 
@@ -35,7 +35,6 @@ Using Javascript, the web page will then append the images found to an area on t
 **To test, just use multiple windows and different usernames!**
 
 ## Your Worker
-===
 
 You will make a file, **worker.js**, that performs a single task
 
@@ -44,7 +43,6 @@ When the worker is informaed to research for a message, it will search the [pixa
 After it downloads these results ("researching"), it will publish a message from pixabay, as well as the user who searched for it, and their message.
 
 ## Your Routes
-===
 
 You will only have 1 route!
 
@@ -53,7 +51,6 @@ You will only have 1 route!
 This route will send a static file that allows users to connect via websocket to the rest of the app
 
 ## General Requirements
-===
 
 1. Remember to submit your **package.json** file but not your **node_modules** folder.
 2. Remember to check for errors, everywhere!
