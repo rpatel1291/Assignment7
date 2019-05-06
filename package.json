@@ -6,20 +6,27 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpatel1291/Assignment7.git"
+  },
   "author": {
     "name": "Ravi Patel",
     "email": "rpate69@stevens.edu",
     "cwid": "10432313"
   },
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rpatel1291/Assignment7/issues"
+  },
+  "homepage": "https://github.com/rpatel1291/Assignment7#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
     "express": "^4.16.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-redux": "^7.0.3",
+    "jquery": "^3.4.1",
+    "popper": "^1.0.1",
     "redis": "^2.8.0",
-    "redux": "^4.0.1",
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0"
   }
