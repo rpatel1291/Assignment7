@@ -14,5 +14,14 @@ app.get("/", (req, res) => {
 })
 
 userSearch.on("connection", socket => {
-    
+
+
+
+    socket.on("disconnect", () => {
+        
+    })
+})
+
+http.listen(port, () => {
+    console.log(`listening on http://localhost:${port}`)
 })
