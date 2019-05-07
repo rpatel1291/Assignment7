@@ -28,7 +28,7 @@
             <div id="form-container" class="container">
                 <h2 class="text-center">User Search Box</h2>
                 <br/>
-                <form id="form1" method="POST" action="">
+                <form id="form1" method="GET" action="/">
                     <fieldset id="form1-username" class="row">
                         <label for="user-name" class="col-md-2">User Name: </label>
                         <input id="username" type="text" name="user-name" required autocomplete="no"/>
@@ -49,5 +49,7 @@
             </div>
             <div id="result-container"></div>
         </main>
+        <script src="/node_modules/jquery/dist/jquery.js"></script>
+        <script src="/node_modules/socket.io"></script>
     </body>
 </html>

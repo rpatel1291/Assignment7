@@ -14,6 +14,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname+'/index.html'))
 })
 
+userSearch.on('connection', socket => {
+    console.log('connected')
+    socket.emit("request-credentials")
+})
+
 app.listen(port, ()=>{
     console.log("listening on http://localhost:3000")
 })
