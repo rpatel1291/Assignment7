@@ -1,9 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Assignment 7: </title>
+        <title>Assignment 7</title>
+        <link 
+            rel="stylesheet" 
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
+            integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" 
+            crossorigin="anonymous"
+        >
+        <meta name="viewport" content="width=device-width, initial-scale, shrink-to-fit=no">
     </head>
     <body>
-        <h1>Hello World</h1>
+        <header>
+            <div className="jumbotron">
+                <div id="header-container" class="container">
+                    <h1 class="display-4 text-center text-uppercase">
+                        Assignment 7
+                    </h1>
+                    <p id="sub-title" class="text-center text-uppercase">
+                        A Websocket And A Worker
+                    </p>
+                </div>
+                <hr/>
+            </div>
+        </header>
+        <main role="main">
+            <div id="form-container" class="container">
+                <h2 class="text-center">User Search Box</h2>
+                <br/>
+                <form id="form1" method="POST" action="">
+                    <fieldset id="form1-username" class="row">
+                        <label for="user-name" class="col-md-2">User Name: </label>
+                        <input id="username" type="text" name="user-name" required autocomplete="no"/>
+                    </fieldset>
+                    <br/>
+                    <fieldset id="form1-query" class="row">
+                        <label for="search-query" class="col-md-2">Search: </label>
+                        <input id="searchQuery" type="text" name="search-query" required/>
+                    </fieldset>
+                    <br/>
+                    <fieldset id="form1-message" class="row">
+                        <label for="user-message" class="col-md-2">User Message: </label>
+                        <textarea id="userMessage" name='user-message' class="col-md-10"></textarea>
+                    </fieldset>
+                    <br/>
+                    <input type="submit">
+                </form>
+            </div>
+            <div id="result-container"></div>
+        </main>
     </body>
 </html>
