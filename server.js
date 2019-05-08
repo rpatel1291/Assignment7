@@ -1,24 +1,49 @@
 const express = require('express')
 const app = express()
-const http = require('http').Server(app)
-const cors = require('cors')
-const path = require('path')
-const io = require("socket.io")(http)
+const bodyParser = require('body-parser')
+
+const server = require('http').createServer(app)
+const io = require("socket.io").listen(server)
 
 const port = 3000
+server.listen(port)
+
+
+const cors = require('cors')
+app.use(cors())
+const path = require('path')
+const redisConnection = require("./redis-connection")
+
 const userSearch = io.of('/user-search')
 
-app.use(cors())
+const connections = []
 
 app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname+'/index.html'))
+
 })
 
-userSearch.on('connection', socket => {
-    console.log('connected')
-    socket.emit("request-credentials")
-})
+userSearch.sockets.on('connection', (socket) =>{
+    let userName = null
+    let searchQuery = null
+    let userMessage = null
 
-app.listen(port, ()=>{
-    console.log("listening on http://localhost:3000")
+    socket.on("disconnect", () => {
+        connections.splice(connections.indexOf(socket),1)
+    })
+
+    socket.on("sending-user", name => {
+        userName = name
+    })
+
+    socket.on("sending-query", query => {
+        searchQuery = query
+    })
+
+    socket.on("sending-message", message => {
+        userMessage = message
+    })
+
+    redisConnection.emit("get-results", {name: userName, query: searchQuery, message: userMessage})
 })
+console.log("Server is running")

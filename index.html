@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <title>Assignment 7</title>
         <link 
             rel="stylesheet" 
@@ -8,7 +10,6 @@
             integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" 
             crossorigin="anonymous"
         >
-        <meta name="viewport" content="width=device-width, initial-scale, shrink-to-fit=no">
     </head>
     <body>
         <header>
@@ -28,15 +29,15 @@
             <div id="form-container" class="container">
                 <h2 class="text-center">User Search Box</h2>
                 <br/>
-                <form id="form1" method="GET" action="/">
+                <form id="form1">
                     <fieldset id="form1-username" class="row">
                         <label for="user-name" class="col-md-2">User Name: </label>
-                        <input id="username" type="text" name="user-name" required autocomplete="no"/>
+                        <input id="username" type="text" name="user-name" />
                     </fieldset>
                     <br/>
                     <fieldset id="form1-query" class="row">
                         <label for="search-query" class="col-md-2">Search: </label>
-                        <input id="searchQuery" type="text" name="search-query" required/>
+                        <input id="searchQuery" type="text" name="search-query" />
                     </fieldset>
                     <br/>
                     <fieldset id="form1-message" class="row">
@@ -44,12 +45,43 @@
                         <textarea id="userMessage" name='user-message' class="col-md-10"></textarea>
                     </fieldset>
                     <br/>
-                    <input type="submit">
+                    <button id="button1" type="submit" class="btn btn-success">Send</button>
                 </form>
             </div>
             <div id="result-container"></div>
         </main>
-        <script src="/node_modules/jquery/dist/jquery.js"></script>
-        <script src="/node_modules/socket.io"></script>
+        <script  data-src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js" type="text/js"></script>
+        <script>
+            let socket = io.connect('http://localhost:3000/');
+            let userNameValue = "";
+            let searchQueryValue = "";
+            let userMessageValue = "";
+
+            $(document).ready(function(){
+                let form = $("#form1");
+                let results = $('#result-container');
+
+                var userName = $("#username");
+                let searchQuery = $('#searchQuery');
+                let userMessage = $('#userMessage');
+                let button = $('button#button1');
+
+                button.click(function() {
+                    // e.preventDefault();
+                    userNameValue = userName.val();
+                    searchQueryValue = searchQuery.val();
+                    userMessageValue = userMessage.val();
+                    
+                    socket.emit("sending-username", userMessageValue)
+                    socket.emit("sending-query", searchQueryValue)
+                    socket.emit("sending-message", userMessageValue)
+                });
+                socket.emit("sending-message", userMessageValue);
+                socket.on('get-Username', function(data){
+                    results.append('<div>'+data.userMessage+'</div>');
+                });
+            });
+        </script>
     </body>
 </html>
